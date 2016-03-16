@@ -10,6 +10,9 @@ export default function fromPromise(promise) {
       let onValue = function(x) {
         emitter.emit(x);
         emitter.end();
+
+        // prevent warning from 'bluebird' library
+        return null;
       };
       let onError = function(x) {
         emitter.error(x);
